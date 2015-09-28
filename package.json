@@ -1,0 +1,40 @@
+{
+  "name": "react-task-list",
+  "version": "1.0.0",
+  "description": "Lista de Tarefas feita usando React",
+  "main": "index.html",
+  "scripts": {
+    "test": "gulp test",
+    "preinstall": "npm i -g gulp",
+    "start": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:https://github.com/guidiego/react-task-list.git"
+  },
+  "keywords": [
+    "react",
+    "flux",
+    "reactjs",
+    "javascript",
+    "node"
+  ],
+  "author": "Guilherme Diego",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "connect-livereload": "^0.5.3",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.4.1",
+    "react": "^0.13.3",
+    "tiny-lr": "^0.2.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
