@@ -6,17 +6,16 @@ class TaskCard extends React.Component {
     super(props);
   }
 
-  static handleButton(__clazz) {
-    var open = __clazz.props.info.open;
-    if(open) {
+  handleButton() {
+    if(this.props.info.open) {
       return(
-        <button className="btn btn-success" onClick={__clazz.changeStatus.bind(__clazz, false)}>
+        <button className="btn btn-success" onClick={this.changeStatus.bind(this, false)}>
           <i className="glyphicon glyphicon-ok"></i>
         </button>
       )
     } else {
       return (
-        <button className="btn btn-warning" onClick={__clazz.changeStatus.bind(__clazz, true)}>
+        <button className="btn btn-warning" onClick={this.changeStatus.bind(this, true)}>
           <i className="glyphicon glyphicon-minus"></i>
         </button>
       )
@@ -25,7 +24,6 @@ class TaskCard extends React.Component {
 
   deleteTask(){TaskAction.deleteTask(this.props.info.id)}
   changeStatus(status){TaskAction.changeStatus({id:this.props.info.id, status:status})}
-
 
   render() {
     return (
@@ -39,8 +37,7 @@ class TaskCard extends React.Component {
           <button className="btn btn-danger" onClick={this.deleteTask.bind(this)}>
             <i className="glyphicon glyphicon-remove"></i>
           </button>
-          {TaskCard.handleButton(this)}
-
+          {this.handleButton()}
         </div>
       </article>
     )
