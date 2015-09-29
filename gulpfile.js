@@ -1,7 +1,12 @@
 var gulp       = require("gulp"),
 
+    //Util
+    rename     = require('gulp-rename'),
+
     //CSS PreCompile Dependencies
     sass       = require("gulp-sass"),
+    minifycss  = require("gulp-minify-css"),
+    fixer      = require("gulp-autoprefixer"),
 
     //Javascript Compile Dependencies
     browserify = require("browserify"),
@@ -40,6 +45,8 @@ gulp.task("react", function () {
 gulp.task("sass", function (){
   gulp.src("src/assets/sass/main.sass")
     .pipe(sass())
+    .pipe(fixer())
+    .pipe(minifycss())
     .pipe(gulp.dest("dist/assets/css"))
     .pipe(connect.reload());
 });
