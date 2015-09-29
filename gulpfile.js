@@ -1,8 +1,5 @@
 var gulp       = require("gulp"),
 
-    //Util
-    rename     = require('gulp-rename'),
-
     //CSS PreCompile Dependencies
     sass       = require("gulp-sass"),
     minifycss  = require("gulp-minify-css"),
@@ -12,6 +9,7 @@ var gulp       = require("gulp"),
     browserify = require("browserify"),
     babelify   = require("babelify"),
     source     = require("vinyl-source-stream"),
+    buffer     = require('vinyl-buffer'),
     uglify     = require("gulp-uglify"),
 
     //Live Reload Dependencies
@@ -37,6 +35,8 @@ gulp.task("react", function () {
     }))
     .bundle()
     .pipe(source("main.js"))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest("dist/assets/js"))
     .pipe(connect.reload());
 });
