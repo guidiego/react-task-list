@@ -2,10 +2,18 @@ import React from "react";
 import TaskAction from "../../actions/TaskAction.js"
 
 class TaskCard extends React.Component {
+  /**
+   * Método Constructor
+   * @param props (object) : Herdado de React.Component
+   */
   constructor(props) {
     super(props);
   }
 
+  /**
+   * Verifica o status da Tarefa para definir o botão de ação (Fechar | Abrir) tarefa
+   * @var this.props.info.open (boolean) : Estado da Tarefa
+   */
   handleButton() {
     if(this.props.info.open) {
       return(
@@ -22,9 +30,22 @@ class TaskCard extends React.Component {
     }
   }
 
+  /**
+   * Chama a ação de Delete da Tarefa
+   * @var this.props.info.id (int) : Propriedade ID da tarefa
+   */
   deleteTask(){TaskAction.deleteTask(this.props.info.id)}
+
+  /**
+   * Chama a ação de Mudança de Status
+   * @var this.props.info.id (int) : Propriedade ID da tarefa
+   * @param status (boolean) : Status da tarefa
+   */
   changeStatus(status){TaskAction.changeStatus({id:this.props.info.id, status:status})}
 
+  /**
+   * Método Render herdado de React.Component
+   */
   render() {
     return (
       <article className="row">

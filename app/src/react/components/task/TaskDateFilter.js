@@ -2,13 +2,23 @@ import React from "react";
 import TaskAction from "../../actions/TaskAction.js"
 
 class TaskDateFilter extends React.Component {
+  /**
+   * Método Constructor
+   * @param props (object) : Herdado de React.Component
+   */
   constructor(props) {
     super(props);
   }
 
-  filterByDate(type) {
-    TaskAction.filterByDate(type);
-  }
+  /**
+   * Chama o método de Filtrar por Data
+   * @param type (boolean) : Tipos de filtro -> True = ASC, False = DESC
+   */
+  filterByDate(type) { TaskAction.filterByDate(type)}
+
+  /**
+   * Método Render herdado de React.Component
+   */
   render() {
     return (
       <div className="date-filter row">
