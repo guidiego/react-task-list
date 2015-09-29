@@ -8,10 +8,13 @@ class TaskStore {
       {id: 1,message: "asd", open: false}
     ];
 
+    this.showList = this.list;
+
     this.bindListeners({
-      attachTask   : TaskAction.ATTACH_TASK,
-      deleteTask   : TaskAction.DELETE_TASK,
-      changeStatus : TaskAction.CHANGE_STATUS
+      attachTask     : TaskAction.ATTACH_TASK,
+      deleteTask     : TaskAction.DELETE_TASK,
+      changeStatus   : TaskAction.CHANGE_STATUS,
+      filterByStatus : TaskAction.FILTER_BY_STATUS
     });
   }
 
@@ -34,6 +37,11 @@ class TaskStore {
   changeStatus(params) {
     var index  = this.list.map(i => i.id).indexOf(params.id);
     this.list[index].open = params.status;
+  }
+
+  filterByStatus(status) {
+    if (status === null) this.showList = this.list
+    else this.showList = this.list.filter(v => v.open == status)
   }
 }
 

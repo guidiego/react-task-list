@@ -20,7 +20,7 @@ class Task extends React.Component {
     return (
       <div>
         <TaskForm />
-        <TaskList list={this.state.list}/>
+        <TaskList list={this.state.showList}/>
       </div>
     )
   }

@@ -12,6 +12,10 @@ class TaskAction {
   changeStatus(params) {
     this.dispatch(params);
   }
+
+  filterByStatus(status) {
+    this.dispatch(status);
+  }
 }
 
 export default Alt.createActions(TaskAction);
