@@ -1,14 +1,10 @@
 import Alt from "../dispatcher.js";
 import TaskAction from "../actions/TaskAction.js";
-
-const MOCK = [
-  {id: 0,message: "oaskdasok", open: true, date : new Date("09/29/2015")},
-  {id: 1,message: "asd", open: false, date : new Date("09/28/2015")}
-];
+import ls from "../utils/TaskStorageUtil.js";
 
 class TaskStore {
   constructor(){
-    this.list = MOCK;
+    this.list = ls.getList();
     this.showList = this.list;
 
     this.bindListeners({
@@ -29,16 +25,19 @@ class TaskStore {
     }
 
     this.list.push(task);
+    ls.setItem(task);
   }
 
   deleteTask(id) {
     var index = this.list.map(i => i.id).indexOf(id);
     this.list.splice(index, 1);
+    ls.deleteItem(id);
   }
 
   changeStatus(params) {
     var index  = this.list.map(i => i.id).indexOf(params.id);
     this.list[index].open = params.status;
+    ls.updateItem({id : param.id, open : params.status});
   }
 
   filterByStatus(status) {
