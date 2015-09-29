@@ -73,12 +73,30 @@ class TaskStore {
    * @param type (boolean) Em caso de "true" a lista volta ASC, caso o contrario, em DESC
    */
   filterByDate(type) {
-    console.log(this.list.sort(this._dateDifASC));
-    //this.showList = type ? this.list.sort(this._dateDifASC) : this.list.sort(this._dateDifDESC);
+    this.showList = type ? this.list.sort(this._dateDifASC) : this.list.sort(this._dateDifDESC);
   }
 
-  _dateDifDESC(a, b) {return a.date.getTime() - b.date.getTime()}
-  _dateDifASC(a, b) {return a.date.getTime() + b.date.getTime()}
+  /**
+   * Método consumido pelo .sort() para devolver a list em ordem DECRESCENTE
+   * @see this.filterByDate
+   * @param a/b (object) : Objetos da lista
+   */
+  _dateDifDESC(a, b) {
+    let d1 = new Date(a.date),
+        d2 = new Date(b.date)
+    return d1.getTime() - d2.getTime()
+  }
+
+  /**
+   * Método consumido pelo .sort() para devolver a list em ordem CRESCENTE
+   * @see this.filterByDate
+   * @param a/b (object) : Objetos da lista
+   */
+  _dateDifASC(a, b) {
+    let d1 = new Date(a.date),
+        d2 = new Date(b.date)
+    return d1.getTime() + d2.getTime()
+  }
 }
 
 export default Alt.createStore(TaskStore, 'TaskStore');

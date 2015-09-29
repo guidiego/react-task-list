@@ -23,10 +23,10 @@ class TaskDateFilter extends React.Component {
     return (
       <div className="date-filter row">
         <div className="col-xs-6">
-          <button className="btn btn-block btn-default" onClick={this.filterByDate.bind(this, true)}>Mais Recentes</button>
+          <button type="button" className="btn btn-block btn-default" onClick={this.filterByDate.bind(this, true)}>Mais Recentes</button>
         </div>
         <div className="col-xs-6">
-          <button className="btn btn-block btn-default" onClick={this.filterByDate.bind(this, false)}>Mais Antigas</button>
+          <button type="button" className="btn btn-block btn-default" onClick={this.filterByDate.bind(this, false)}>Mais Antigas</button>
         </div>
       </div>
     )
