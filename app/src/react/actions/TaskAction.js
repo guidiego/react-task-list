@@ -16,6 +16,10 @@ class TaskAction {
   filterByStatus(status) {
     this.dispatch(status);
   }
+
+  filterByDate(type) {
+    this.dispatch(type);
+  }
 }
 
 export default Alt.createActions(TaskAction);

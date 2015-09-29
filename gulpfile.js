@@ -11,6 +11,8 @@ var gulp       = require("gulp"),
 
     //Live Reload Dependencies
     connect = require( 'gulp-connect' );
+
+
 //Build the Application using the other tasks
 gulp.task("build", ["react", "sass", "copy"], function () {
   console.log("Finished!");

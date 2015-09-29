@@ -4,9 +4,20 @@
   "description": "Lista de Tarefas feita usando React",
   "main": "index.html",
   "scripts": {
-    "test": "gulp test",
+    "test": "jest",
     "preinstall": "npm i -g gulp",
-    "start": "gulp serve"
+    "start": "gulp serve",
+    "postinstall": "jspm install"
+  },
+  "jest": {
+    "scriptPreprocessor": "./preprocessor.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/jspm_packages"
+    ],
+    "unmockedModulePathPatterns": [
+      "./node_modules/react"
+    ]
   },
   "repository": {
     "type": "git",
@@ -39,6 +50,7 @@
   },
   "dependencies": {
     "alt": "^0.17.3",
-    "jest": "^0.1.40"
+    "jest": "^0.1.40",
+    "react-tools": "^0.13.3"
   }
 }

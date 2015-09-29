@@ -6,14 +6,17 @@ class TaskDateFilter extends React.Component {
     super(props);
   }
 
+  filterByDate(type) {
+    TaskAction.filterByDate(type);
+  }
   render() {
     return (
       <div className="date-filter row">
         <div className="col-xs-6">
-          <button className="btn btn-block btn-default">Mais Recentes</button>
+          <button className="btn btn-block btn-default" onClick={this.filterByDate.bind(this, true)}>Mais Recentes</button>
         </div>
         <div className="col-xs-6">
-          <button className="btn btn-block btn-default">Mais Antigas</button>
+          <button className="btn btn-block btn-default" onClick={this.filterByDate.bind(this, false)}>Mais Antigas</button>
         </div>
       </div>
     )
