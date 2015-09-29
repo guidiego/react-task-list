@@ -50,7 +50,7 @@ class TaskCard extends React.Component {
     return (
       <article className="row">
         <div className="col-xs-10">
-          <h5>
+          <h5 className="hsdjhnafngblacfonhldasub">
             {this.props.info.message}
           </h5>
         </div>
