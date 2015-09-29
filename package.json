@@ -6,8 +6,7 @@
   "scripts": {
     "test": "BABEL_JEST_STAGE=0 jest",
     "preinstall": "npm i -g gulp",
-    "start": "gulp serve",
-    "postinstall": "jspm install"
+    "start": "gulp serve"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",

@@ -1,16 +1,19 @@
-# React Task List
+# React Task List [![Build Status](https://travis-ci.org/guidiego/react-task-list.svg?branch=master)](https://travis-ci.org/guidiego/react-task-list)
 Listagem de tarefas com React + Flux
 
 # Instalando
+Antes de começar, certifique que o **ruby** esta instalado, e que seu **node** esta na versão **0.12** ou maior.
+
 ```sh
+gem install sass
 git clone https://github.com/guidiego/react-task-list.git
 npm install #Talvez precise de sudo (caso falte permissão)
-npm start #Execulta o gulp serve
+npm start #Executa o gulp serve
 ```
 # Tasks do Gulp
 
 ####gulp serve
-Constroi o dist da aplicação, em seguida, inicia o servidor com livereload e chama o *"watcher"* responsaveis por copilar a aplicação em REACT+FLUX, como precopilar o SASS.
+Constrói o dist da aplicação. Em seguida, inicia o servidor com livereload e chama os *"watchers"* responsáveis por compilar a aplicação em REACT+FLUX, além de precompilar o SASS.
 
 ####gulp build
 Cria o dist a aplicação
@@ -19,10 +22,10 @@ Cria o dist a aplicação
 Inicia os *"watchers"*
 
 ####gulp sass
-Precopila CSS
+Pre-compila CSS
 
 ####gulp react
-Copila a aplicação do React
+Compila a aplicação do React
 
 ####gulp copy
 Task auxiliar para copiar o index.html
