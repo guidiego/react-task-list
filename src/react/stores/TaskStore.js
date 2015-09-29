@@ -78,7 +78,7 @@ class TaskStore {
    * @param type (boolean) Em caso de "true" a lista volta ASC, caso o contrario, em DESC
    */
   filterByDate(type) {
-    this.showList = type ? this.list.sort(this._dateDifASC.bind(this)) : this.list.sort(this._dateDifDESC.bind(this));
+    this.list = type ? this.list.sort(this._dateDifASC.bind(this)) : this.list.sort(this._dateDifDESC.bind(this));
   }
 
   /**
