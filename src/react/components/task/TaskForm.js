@@ -33,7 +33,7 @@ class TaskForm extends React.Component {
           <span className="input-group-addon">
             <i className="glyphicon glyphicon-plus"></i>
           </span>
-          <input type="text" id="taskInput" className="form-control" placeholder="Insira sua tarefa..." />
+          <input autocomplete="off" type="text" id="taskInput" className="form-control" placeholder="Insira sua tarefa..." />
         </div>
 
         <TaskDateFilter />

@@ -33,7 +33,7 @@ class TaskStore {
 
     if(list[list.length - 1] != undefined) {
       var x = this.list[this.list.length - 1];
-      task.id = x["id"]++;
+      task.id = x["id"] + 1;
     } else {
       task.id =0;
     }
