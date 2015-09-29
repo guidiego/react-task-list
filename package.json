@@ -10,7 +10,7 @@
     "postinstall": "jspm install"
   },
   "jest": {
-    "scriptPreprocessor": "./preprocessor.js",
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/jspm_packages"

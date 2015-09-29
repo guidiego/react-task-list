@@ -1,6 +1,7 @@
-jest.dontMock('src/react/components/task/TaskCard.js');
 import React from "react/addons";
-import TaskCard from 'src/react/components/task/TaskCard.js';
+import TaskCard from '../src/react/components/task/TaskCard.js';
+
+jest.dontMock('../src/react/components/task/TaskCard.js');
 
 describe('TaskCard', function () {
   var TestUtils = React.addons.TestUtils;
