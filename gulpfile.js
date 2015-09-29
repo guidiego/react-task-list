@@ -11,10 +11,6 @@ var gulp       = require("gulp"),
 
     //Live Reload Dependencies
     connect = require( 'gulp-connect' );
-
-//Up a server
-
-
 //Build the Application using the other tasks
 gulp.task("build", ["react", "sass", "copy"], function () {
   console.log("Finished!");
@@ -22,14 +18,16 @@ gulp.task("build", ["react", "sass", "copy"], function () {
 
 gulp.task("watch", function () {
   gulp.watch("app/src/assets/sass/**/*", ["sass"]);
-  gulp.watch("app/src/assets/react/**/*", ["react"]);
+  gulp.watch("app/src/react/**/*", ["react"]);
   gulp.watch("app/src/index.html", ["copy"]);
 });
 
 // Do the React Compile Black Magic
 gulp.task("react", function () {
   return browserify("./app/src/react/main.js")
-    .transform("babelify")
+    .transform(babelify.configure({
+      optional: ["es7.decorators"]
+    }))
     .bundle()
     .pipe(source("main.js"))
     .pipe(gulp.dest("dist/assets/js"))
@@ -38,7 +36,7 @@ gulp.task("react", function () {
 
 //SASS
 gulp.task("sass", function (){
-  gulp.src("src/assets/sass/main.scss")
+  gulp.src("app/src/assets/sass/main.sass")
     .pipe(sass())
     .pipe(gulp.dest("dist/assets/css"))
     .pipe(connect.reload());
