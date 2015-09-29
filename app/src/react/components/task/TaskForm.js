@@ -1,5 +1,6 @@
 import React from "react";
-import TaskAction from "../../actions/TaskAction.js"
+import TaskAction from "../../actions/TaskAction.js";
+import TaskDateFilter from "./TaskDateFilter.js";
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -23,14 +24,7 @@ class TaskForm extends React.Component {
           <input type="text" id="taskInput" className="form-control" placeholder="Insira sua tarefa..." />
         </div>
 
-        <div className="date-filter row">
-          <div className="col-xs-6">
-            <button className="btn btn-block btn-default">Mais Recentes</button>
-          </div>
-          <div className="col-xs-6">
-            <button className="btn btn-block btn-default">Mais Antigas</button>
-          </div>
-        </div>
+        <TaskDateFilter />
       </form>
     )
   }
