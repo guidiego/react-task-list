@@ -32,7 +32,7 @@ class Task extends React.Component {
     return (
       <div>
         <TaskForm />
-        <TaskList list={this.state.showList}/>
+        <TaskList list={this.state.list}/>
       </div>
     )
   }

@@ -5,12 +5,11 @@ import ls from "../utils/TaskStorageUtil.js";
 class TaskStore {
   /**
    * Método constructor
-   * @var list : "Imutavel", guarda a lista de tarefas "sem" alterações
-   * @var showList : Lista que sera modificada/apresentada pelo componente TaskList
+   * @var list : Lista espelho do Cache
    */
   constructor(){
     this.list = ls.getList() || [];
-    this.showList = this.list;
+    this.order = "DESC";
 
     this.bindListeners({
       attachTask     : TaskAction.ATTACH_TASK,
@@ -34,7 +33,13 @@ class TaskStore {
     }
 
     ls.setItem(task);
-    this.list.push(task);
+    if (this.order == "DESC") {
+      this.list.push(task)
+    } else {
+      let list = this.list.reverse();
+      list.push(task);
+      this.list = list.reverse();
+    }
   }
 
   /**
@@ -42,7 +47,7 @@ class TaskStore {
    * @param id (number) : Propriedade ID da Tarefa
    */
   deleteTask(id) {
-    var index = this.list.map(i => i.id).indexOf(id);
+    var index = ls.getList().map(i => i.id).indexOf(id);
     this.list.splice(index, 1);
     ls.deleteItem(id);
   }
@@ -54,7 +59,7 @@ class TaskStore {
    * object.status (boolean) : Estado que a Tarefa ira ser colocada
    */
   changeStatus(params) {
-    var index  = this.list.map(i => i.id).indexOf(params.id);
+    var index  = ls.getList().map(i => i.id).indexOf(params.id);
     this.list[index].open = params.status;
     ls.updateItem({id : params.id}, {open : params.status});
   }
@@ -64,8 +69,8 @@ class TaskStore {
    * @param status (boolean | null) Estado desejado, caso venha null significa que a lista sera enviada inteira
    */
   filterByStatus(status) {
-    if (status === null) this.showList = this.list
-    else this.showList = this.list.filter(v => v.open == status)
+    if (status === null) this.list = ls.getList() || []
+    else this.list = ls.getList().filter(v => v.open == status)
   }
 
   /**
@@ -73,7 +78,7 @@ class TaskStore {
    * @param type (boolean) Em caso de "true" a lista volta ASC, caso o contrario, em DESC
    */
   filterByDate(type) {
-    this.showList = type ? this.list.sort(this._dateDifASC) : this.list.sort(this._dateDifDESC);
+    this.showList = type ? this.list.sort(this._dateDifASC.bind(this)) : this.list.sort(this._dateDifDESC.bind(this));
   }
 
   /**
@@ -83,7 +88,9 @@ class TaskStore {
    */
   _dateDifDESC(a, b) {
     let d1 = new Date(a.date),
-        d2 = new Date(b.date)
+        d2 = new Date(b.date);
+
+    this.order = "DESC";
     return d1.getTime() - d2.getTime()
   }
 
@@ -94,7 +101,9 @@ class TaskStore {
    */
   _dateDifASC(a, b) {
     let d1 = new Date(a.date),
-        d2 = new Date(b.date)
+        d2 = new Date(b.date);
+
+    this.order = "ASC";
     return d1.getTime() + d2.getTime()
   }
 }
