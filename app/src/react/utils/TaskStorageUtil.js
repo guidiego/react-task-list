@@ -1,8 +1,5 @@
 class TaskStorageUtil {
-  constructor() {
-    localStorage.setItem("tasklist", JSON.stringify([]));
-  }
-  getList() {return JSON.parse(localStorage.getItem("tasklist"))}
+  getList() {return JSON.parse(localStorage.getItem("tasklist")) || []}
 
   setItem(item) {
     let list = this.getList();

@@ -4,7 +4,7 @@ import ls from "../utils/TaskStorageUtil.js";
 
 class TaskStore {
   constructor(){
-    this.list = ls.getList();
+    this.list = ls.getList() || [];
     this.showList = this.list;
 
     this.bindListeners({
@@ -24,8 +24,8 @@ class TaskStore {
       message : message
     }
 
-    this.list.push(task);
     ls.setItem(task);
+    this.list.push(task);
   }
 
   deleteTask(id) {
@@ -37,7 +37,7 @@ class TaskStore {
   changeStatus(params) {
     var index  = this.list.map(i => i.id).indexOf(params.id);
     this.list[index].open = params.status;
-    ls.updateItem({id : param.id, open : params.status});
+    ls.updateItem({id : params.id}, {open : params.status});
   }
 
   filterByStatus(status) {

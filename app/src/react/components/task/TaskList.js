@@ -10,7 +10,7 @@ class TaskList extends React.Component {
   filterBy(status) {
     TaskAction.filterByStatus(status);
   }
-
+  
   render() {
     return (
       <section className="row" id="taskList">
