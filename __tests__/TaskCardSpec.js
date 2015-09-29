@@ -21,13 +21,25 @@ const MOCK = [
 describe('TaskCard', function () {
   var TestUtils = React.addons.TestUtils;
 
-  it('Se o component esta sendo rendenizado', function () {
+  it('Componente Rendeniza', function () {
     let component = TestUtils.renderIntoDocument(<TaskCard />);
     expect(TestUtils.isCompositeComponent(component)).toBeTruthy();
   });
 
-  it('Se a mensagem esta correta', function () {
+  it('Component esta com propriedade OPEN normal - True', function () {
+    let component = TestUtils.renderIntoDocument(<TaskCard info={MOCK[0]}/>);
+    expect(component.props.info.open).toBeTruthy();
+  });
+
+  it('Component esta com propriedade OPEN normal - False', function () {
+    let component = TestUtils.renderIntoDocument(<TaskCard info={MOCK[1]}/>);
+    expect(component.props.info.open).toBeFalsy();
+  });
+
+
+  it('Se a mensagem do componente esta normal', function () {
     let component = TestUtils.renderIntoDocument(<TaskCard info={MOCK[0]}/>);
     expect(component.props.info.message).toEqual("Minha mensagem de test 1");
   });
+
 });

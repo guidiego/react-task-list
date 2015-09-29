@@ -39,4 +39,6 @@ O código esta usando ES6 (Babel) e Alt (Flux Framework)
 Por varios problemas com o *gulp-compass*, optei pelo *sass* + *auto-prefixer*
 
 # Testes e CI
-Em teste...
+Os testes estão sendo feitos através do comando **npm test**, utilizando **JEST**, por falta de conhecimento/contato, os teste foram bem superficiais, apenas para testar a ferramenta mesmo :)
+
+A integração/build foi feito através do travis-ci, implementação de JS-HINT, code validators, entre outros sempre são bem vindas na task do travis (aqui não existente devido a unica condição de build ser nossos testes)
