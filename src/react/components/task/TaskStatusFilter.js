@@ -26,7 +26,7 @@ class TaskStatusFilter extends React.Component {
         <label>Filtrar por :</label>
         <button className="btn btn-xs btn-success" onClick={this.filterByStatus.bind(this, false)}>Prontas</button>
         <button className="btn btn-xs btn-warning" onClick={this.filterByStatus.bind(this, true)}>A fazer</button>
-        <button className="btn btn-xs btn-danger" onClick={this.filterByStatus.bind(this, null)}>Resetar</button>
+        <button className="btn btn-xs btn-primary" onClick={this.filterByStatus.bind(this, null)}>Todos</button>
       </div>
     )
   }

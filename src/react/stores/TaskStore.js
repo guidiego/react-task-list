@@ -10,6 +10,7 @@ class TaskStore {
   constructor(){
     this.list = ls.getList() || [];
     this.order = "DESC";
+    this.stats = null;
 
     this.bindListeners({
       attachTask     : TaskAction.ATTACH_TASK,
@@ -25,6 +26,15 @@ class TaskStore {
    * @param message (string) : Mensagem captada do component TaskForm
    */
   attachTask(message) {
+    if (this._repeatOnList(message)) {
+      $("#taskInput").attr("placeholder", "Ja existe uma task identica!")
+        .parent().addClass("has-error");
+      return;
+    }
+
+    $("#taskInput").attr("placeholder", "Insita sua tarefa...")
+      .parent().removeClass("has-error");
+
     let task = {
       date    : new Date(),
       open    : true,
@@ -68,6 +78,7 @@ class TaskStore {
     var index  = this.list.map(i => i.id).indexOf(params.id);
     this.list[index].open = params.status;
     ls.updateItem({id : params.id}, {open : params.status});
+    this.filterByStatus(this.stats);
   }
 
   /**
@@ -75,16 +86,21 @@ class TaskStore {
    * @param status (boolean | null) Estado desejado, caso venha null significa que a lista sera enviada inteira
    */
   filterByStatus(status) {
+    this.stats = status;
     if (status === null) this.list = ls.getList() || []
     else this.list = ls.getList().filter(v => v.open == status)
   }
 
   /**
    * Filtra a lista pela data
-   * @param type (boolean) Em caso de "true" a lista volta ASC, caso o contrario, em DESC
+   * @param type (boolean) Em caso de "false" a lista volta ASC, caso o contrario, em DESC
    */
   filterByDate(type) {
-    this.list = type ? this.list.sort(this._dateDifASC.bind(this)) : this.list.sort(this._dateDifDESC.bind(this));
+    if (this.order === "ASC" && type === "DESC") {
+      this.list = this.list.sort(this._dateDifDESC.bind(this));
+    } else if (this.order === "DESC" && type === "ASC") {
+      this.list = this.list.sort(this._dateDifASC.bind(this));
+    }
   }
 
   /**
@@ -111,6 +127,11 @@ class TaskStore {
 
     this.order = "ASC";
     return d1.getTime() + d2.getTime()
+  }
+
+  _repeatOnList(message) {
+    var x = ls.getList().filter(t => !!t.message.match(new RegExp(message, "gi")));
+    return x.length > 0;
   }
 }
 

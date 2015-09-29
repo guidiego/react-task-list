@@ -17,14 +17,14 @@ class TaskCard extends React.Component {
   handleButton() {
     if(this.props.info.open) {
       return(
-        <button className="btn btn-success" onClick={this.changeStatus.bind(this, false)}>
-          <i className="glyphicon glyphicon-ok"></i>
+        <button className="btn btn-warning" onClick={this.changeStatus.bind(this, false)}>
+          <i className="glyphicon glyphicon-minus"></i>
         </button>
       )
     } else {
       return (
-        <button className="btn btn-warning" onClick={this.changeStatus.bind(this, true)}>
-          <i className="glyphicon glyphicon-minus"></i>
+        <button className="btn btn-success" onClick={this.changeStatus.bind(this, true)}>
+          <i className="glyphicon glyphicon-ok"></i>
         </button>
       )
     }

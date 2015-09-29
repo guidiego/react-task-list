@@ -17,10 +17,18 @@ class TaskForm extends React.Component {
    */
   handleSubmit(e){
     e.preventDefault();
-    let input = document.getElementById('taskInput'),
-        val   = input.value;
-    input.value = "";
-    TaskAction.attachTask(val);
+    var input = $("#taskInput"),
+        val   = input.val();
+
+    if (val.replace(/ /gi, "") === "") {
+      input.parent().addClass("has-error");
+      input.attr("placeholder", "Insira ao menos uma letra!");
+    } else {
+      input.val("");
+      input.parent().removeClass("has-error");
+      input.attr("placeholder", "Insira sua tarefa...");
+      console.log(TaskAction.attachTask(val));
+    }
   }
 
   /**
@@ -30,7 +38,7 @@ class TaskForm extends React.Component {
     return (
       <form id="taskForm" onSubmit={this.handleSubmit}>
         <div className="input-group row">
-          <span className="input-group-addon">
+          <span onClick={this.handleSubmit} className="input-group-addon">
             <i className="glyphicon glyphicon-plus"></i>
           </span>
           <input autoComplete="off" type="text" id="taskInput" className="form-control" placeholder="Insira sua tarefa..." />
