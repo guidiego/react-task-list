@@ -26,10 +26,16 @@ class TaskStore {
    */
   attachTask(message) {
     let task = {
-      id      : this.list.length,
       date    : new Date(),
       open    : true,
       message : message
+    }, list = ls.getList();
+
+    if(list[list.length - 1] != undefined) {
+      var x = this.list[this.list.length - 1];
+      task.id = x["id"]++;
+    } else {
+      task.id =0;
     }
 
     ls.setItem(task);
@@ -47,7 +53,7 @@ class TaskStore {
    * @param id (number) : Propriedade ID da Tarefa
    */
   deleteTask(id) {
-    var index = ls.getList().map(i => i.id).indexOf(id);
+    var index = this.list.map(i => i.id).indexOf(id);
     this.list.splice(index, 1);
     ls.deleteItem(id);
   }
@@ -59,7 +65,7 @@ class TaskStore {
    * object.status (boolean) : Estado que a Tarefa ira ser colocada
    */
   changeStatus(params) {
-    var index  = ls.getList().map(i => i.id).indexOf(params.id);
+    var index  = this.list.map(i => i.id).indexOf(params.id);
     this.list[index].open = params.status;
     ls.updateItem({id : params.id}, {open : params.status});
   }
