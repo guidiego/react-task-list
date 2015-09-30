@@ -35,7 +35,7 @@ class ModalFirstTime extends React.Component {
           <Modal.Title>Bem Vindo ao Anote Aqui!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            Bem Vindo ao "Anote Aqui!", um simples TaskManager para você usar nos seus a fazeres diarios! Parece que é sua primeira vez aqui, então vamos entender como ele funciona:
+            Bem Vindo ao "Anote Aqui!", um simples TaskManager para você usar nos seus afazeres diários! Parece que é sua primeira vez aqui, então vamos entender como ele funciona:
 
             <div className="row">
               <div className="col-md-1">
@@ -44,7 +44,7 @@ class ModalFirstTime extends React.Component {
                 </div>
               </div>
               <div className="col-md-11">
-                Isso significa que sua tarefa esta na lista de <span className="label label-warning">A Fazer</span>, se você clicar nesse botão, ele ira colocar sua Tarefa na lista de Tarefas <span className="label label-success">Prontas</span>
+                Isso significa que sua tarefa está na lista de tarefas <span className="label label-warning">A Fazer</span>. Se você clicar nesse botão, ele irá colocar sua Tarefa na lista de Tarefas <span className="label label-success">Prontas</span>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ class ModalFirstTime extends React.Component {
                 </div>
               </div>
               <div className="col-md-11">
-                Isso significa que sua tarefa esta na lista de taredas <span className="label label-success">Prontas</span>, se você clicar nesse botão, ele ira colocar sua Tarefa na lista de Tarefas <span className="label label-warning">A Fazer</span>
+                Isso significa que sua tarefa está na lista de tarefas <span className="label label-success">Prontas</span>,. Se você clicar nesse botão, ele irá colocar sua Tarefa na lista de Tarefas <span className="label label-warning">A Fazer</span>.
               </div>
             </div>
 
@@ -71,9 +71,7 @@ class ModalFirstTime extends React.Component {
             </div>
 
             <h3>Filtros sempre ajudam!</h3>
-            Existe filtros de data (Mais Recentes e Mais Antigas) abaixo do Campo de Inserir Task.
-            Existe um outro filtro para Tipo de Lista de Tarefas no final da lista!
-
+            Existem filtros de data (Mais Recentes e Mais Antigas) abaixo do Campo de Inserir Task. Existe um outro filtro para Tipo de Lista de Tarefas no final da lista!
 
         </Modal.Body>
         <Modal.Footer>

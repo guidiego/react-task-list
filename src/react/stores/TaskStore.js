@@ -130,7 +130,7 @@ class TaskStore {
   }
 
   _repeatOnList(message) {
-    var x = ls.getList().filter(t => !!t.message.match(new RegExp(message, "gi")));
+    var x = ls.getList().filter(t => message.toLowerCase() === t.message.toLowerCase());
     return x.length > 0;
   }
 }
