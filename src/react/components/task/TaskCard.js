@@ -1,5 +1,6 @@
 import React from "react";
-import TaskAction from "../../actions/TaskAction.js"
+import TaskAction from "../../actions/TaskAction.js";
+import DateUtil from "../../utils/DateUtil.js";
 
 class TaskCard extends React.Component {
   /**
@@ -50,9 +51,12 @@ class TaskCard extends React.Component {
     return (
       <article className="row">
         <div className="col-xs-10">
-          <h5 className="hsdjhnafngblacfonhldasub">
+          <h5>
             {this.props.info.message}
           </h5>
+          <span className="date">
+            {DateUtil.format(this.props.info.date)}
+          </span>
         </div>
         <div className="col-xs-2">
           <button className="btn btn-danger" onClick={this.deleteTask.bind(this)}>
