@@ -51,6 +51,7 @@
   "dependencies": {
     "alt": "^0.17.3",
     "jest": "^0.1.40",
+    "react-bootstrap": "^0.25.2",
     "react-tools": "^0.13.3"
   }
 }

@@ -18,7 +18,7 @@ class TaskCard extends React.Component {
     if(this.props.info.open) {
       return(
         <button className="btn btn-warning" onClick={this.changeStatus.bind(this, false)}>
-          <i className="glyphicon glyphicon-minus"></i>
+          <i className="glyphicon glyphicon-ok"></i>
         </button>
       )
     } else {

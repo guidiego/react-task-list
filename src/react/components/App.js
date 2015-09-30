@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "./task/Task.js";
+import ModalFirstTime from "./modal/ModalFirstTime.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <ModalFirstTime />
         <header className="text-center">
           <h2>Lista de Tarefas</h2>
         </header>
